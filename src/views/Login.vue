@@ -37,7 +37,7 @@ const onSubmit = async () => {
             type="text"
             v-model="username"
             label="ID *"
-            hint="for test: test"
+            hint="for test: edu"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Please type username(ID)']"
           />
@@ -46,7 +46,7 @@ const onSubmit = async () => {
             type="password"
             v-model="password"
             label="Password *"
-            hint="for test: test"
+            hint="for test: edu1234"
             lazy-rules
             :rules="[(val) => (val !== null && val !== '') || 'Please type your password']"
           />

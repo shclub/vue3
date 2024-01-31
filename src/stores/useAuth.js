@@ -2,7 +2,8 @@ import { defineStore } from 'pinia';
 import { fetchWrapper } from '@/helpers';
 import router from '@/router';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/api`;
+//const baseUrl = `${import.meta.env.VITE_API_URL}/api`;
+const authUrl = '/api/login';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -12,7 +13,8 @@ export const useAuthStore = defineStore('auth', {
   }),
   actions: {
     async login(username, password) {
-      const user = await fetchWrapper.post(`${baseUrl}/login`, { username, password });
+      //const user = await fetchWrapper.post(`${baseUrl}/login`, { username, password });
+      const user = await fetchWrapper.post(authUrl, { username, password });
 
       // update pinia state
       this.user = user;
