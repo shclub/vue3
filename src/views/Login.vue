@@ -37,7 +37,7 @@ const onSubmit = async () => {
             type="text"
             v-model="username"
             label="ID *"
-            hint="for test: edu"
+            hint="for test: edu bluegree/canary test"
             lazy-rules
             :rules="[(val) => (val && val.length > 0) || 'Please type username(ID)']"
           />
