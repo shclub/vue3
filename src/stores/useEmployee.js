@@ -38,7 +38,7 @@ export const useEmployeeStore = defineStore('employee', {
     async deleteEmployee(id) {
       try {
         this.isLoading = true;
-        const deletedEmployee = await fetchWrapper.post(`${employeeUrl}/${id}`);
+        const deletedEmployee = await fetchWrapper.post(`/api/v1/employee/${id}`);
         this.employees = this.employees.filter((t) => t.id !== deletedEmployee.id);
       } catch (error) {
         console.log(error);
@@ -48,20 +48,19 @@ export const useEmployeeStore = defineStore('employee', {
     },
     // 특정 임직원 수정
     async editEmployee(id, employee) {
-      console.log(id, {employee})
+      console.log(id, { employee });
       try {
         this.isLoading = true;
         let target = this.employees.find((t) => t.id === id);
 
         if (!target) return;
-        
-        const updatedEmployee = await fetchWrapper.post(`/api/v1/employee/${id}`, employee);
+
+        const updatedEmployee = await fetchWrapper.post(`${employeeUrl}/${id}`, employee);
 
         target.empName = updatedEmployee.empName;
         target.empDeptName = updatedEmployee.empDeptName;
         target.empTelNo = updatedEmployee.empTelNo;
         target.empMail = updatedEmployee.empMail;
-
       } catch (error) {
         console.log(error);
       } finally {

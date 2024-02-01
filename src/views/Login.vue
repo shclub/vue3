@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useQuasar } from 'quasar';
 import { useAuthStore } from '@/stores/useAuth';
+import router from '@/router';
 
 const authStore = useAuthStore();
 
@@ -22,6 +23,21 @@ const onSubmit = async () => {
     });
   }
 };
+
+onMounted(() => {
+  if (authStore.user?.token) {
+    router.push('/employees');
+  }
+});
+
+watch(
+  () => authStore.user?.token,
+  (token) => {
+    if (token) {
+      router.push('/employees');
+    }
+  }
+);
 </script>
 
 <template>
