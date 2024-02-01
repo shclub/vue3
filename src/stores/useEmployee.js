@@ -38,7 +38,7 @@ export const useEmployeeStore = defineStore('employee', {
     async deleteEmployee(id) {
       try {
         this.isLoading = true;
-        const deletedEmployee = await fetchWrapper.post(`${employeeUrl}/${id}`);
+        const deletedEmployee = await fetchWrapper.post(${employeeUrl}/${id});
         this.employees = this.employees.filter((t) => t.id !== deletedEmployee.id);
       } catch (error) {
         console.log(error);
@@ -55,7 +55,7 @@ export const useEmployeeStore = defineStore('employee', {
 
         if (!target) return;
         
-        const updatedEmployee = await fetchWrapper.post(`/api/v1/employee/${id}`, employee);
+        const updatedEmployee = await fetchWrapper.post(/api/v1/employee/${id}, employee);
 
         target.empName = updatedEmployee.empName;
         target.empDeptName = updatedEmployee.empDeptName;
